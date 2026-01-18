@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebDev lb</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  color: white;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* ================= NAVBAR ================= */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* TOP (HERO) STATE */
+.navbar.transparent {
+  background: transparent;
+}
+
+.navbar.transparent .logo,
+.navbar.transparent .nav-links a {
+  color: white;
+}
+
+/* SCROLLED STATE */
+.navbar.scrolled {
+  position: fixed;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.navbar.scrolled .logo,
+.navbar.scrolled .nav-links a {
+  color: #0f172a;
+}
+
+/* LOGO */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: #1e90ff;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #1e90ff;
+}
+
+/* CONTACT BUTTON (ALWAYS BLUE BOX, WHITE TEXT) */
+.contact-btn {
+  background: #1e90ff;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.contact-btn:hover {
+  background: #187bdb;
+}
+
+/* ================= HERO ================= */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)),
+    url("https://images.unsplash.com/photo-1524758631624-e2822e304c36");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.hero h1 {
+  font-size: 72px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: #1e90ff;
+}
+
+.hero p {
+  font-size: 20px;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* HERO BUTTONS */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.primary-btn {
+  background: #1e90ff;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s;
+}
+
+.primary-btn:hover {
+  background: #187bdb;
+}
+
+.secondary-btn {
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 16px 32px;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.secondary-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ================= SERVICES ================= */
+.services {
+  background: #f9fafb;
+  padding: 120px 80px;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.services-header h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.services-header p {
+  font-size: 18px;
+  color: #475569;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.service-card {
+  background: white;
+  padding: 45px 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.icon-box {
+  width: 56px;
+  height: 56px;
+  background: #1e5bff;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.service-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.service-card p {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.7;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services {
+    padding: 80px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 17px;
+  }
+}
+/* ================= PORTFOLIO ================= */
+.portfolio {
+  background: #ffffff;
+  padding: 120px 80px;
+}
+
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.portfolio-header h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.portfolio-header p {
+  font-size: 18px;
+  color: #475569;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.portfolio-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+}
+
+/* IMAGE ZOOM */
+.portfolio-image {
+  overflow: hidden;
+}
+
+.portfolio-image {
+  background: #f8fafc; /* soft background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  padding: 20px;
+}
+
+
+.portfolio-card:hover .portfolio-image img {
+  transform: scale(1.08);
+}
+
+/* CONTENT */
+.portfolio-content {
+  padding: 30px;
+}
+
+.portfolio-tag {
+  display: inline-block;
+  font-size: 14px;
+  color: #1e5bff;
+  margin-bottom: 10px;
+}
+
+.portfolio-content h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.portfolio-content p {
+  font-size: 16px;
+  color: #475569;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.portfolio-link {
+  color: #1e5bff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.portfolio-link:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio {
+    padding: 80px 30px;
+  }
+}
+/* MAKE ENTIRE CARD CLICKABLE */
+.portfolio-card-link {
+  text-decoration: none;
+  display: block;
+}
+
+.portfolio-card-link * {
+  cursor: pointer;
+}
+
+/* Prevent link color inheritance */
+.portfolio-card-link h3,
+.portfolio-card-link p,
+.portfolio-card-link span {
+  color: inherit;
+}
+/* ===== PORTFOLIO TEXT COLORS ===== */
+
+/* Tag + View Project always blue */
+.portfolio-tag,
+.portfolio-link {
+  color: #1e5bff;
+  font-weight: 600;
+}
+
+/* Title default */
+.portfolio-content h3 {
+  color: #0f172a;
+  transition: color 0.3s ease;
+}
+
+/* Title turns blue on hover */
+.portfolio-card:hover .portfolio-content h3 {
+  color: #1e5bff;
+}
+
+/* Description stays gray */
+.portfolio-content p {
+  color: #475569;
+}
+/* ================= CONTACT ================= */
+.contact {
+  padding: 120px 80px;
+  background: #ffffff;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.contact-header h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.contact-header p {
+  font-size: 18px;
+  color: #475569;
+}
+
+/* GRID */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* LEFT INFO */
+.contact-info h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 30px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  background: #e0ebff;
+  color: #1e5bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.contact-item p {
+  color: #475569;
+  margin-top: 5px;
+}
+
+/* FORM */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #0f172a;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #1e5bff;
+}
+
+/* BUTTON */
+.contact-form button {
+  margin-top: 25px;
+  background: #1e5bff;
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.contact-form button:hover {
+  background: #1748d4;
+}
+
+#form-status {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact {
+    padding: 80px 30px;
+  }
+}
+/* ================= FOOTER ================= */
+.footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 80px 80px 30px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-logo {
+  font-size: 26px;
+  font-weight: 800;
+  color: white;
+}
+
+.footer-logo span {
+  color: #1e5bff;
+}
+
+.footer-text {
+  margin-top: 15px;
+  font-size: 15px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* COLUMNS */
+.footer-col h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: white;
+}
+
+/* QUICK LINKS */
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 15px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer-links a:hover {
+  color: #1e5bff;
+  transform: translateX(4px);
+}
+
+/* SOCIALS */
+.footer-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-socials a {
+  width: 42px;
+  height: 42px;
+  background: #1e293b;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  transition: background 0.35s, transform 0.35s;
+}
+
+.footer-socials a:hover {
+  background: #1e5bff;
+  transform: translateY(-4px);
+}
+
+/* BOTTOM */
+.footer-bottom {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer {
+    padding: 70px 30px 25px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+}
+/* ================= BUTTON SYSTEM ================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* PRIMARY */
+.btn-primary {
+  background: #1e90ff;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #187bdb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(30, 144, 255, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* SECONDARY */
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+.btn {
+  will-change: transform;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+/* DARK CONTEXT (white background sections) */
+.navbar.scrolled .btn-secondary {
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+.portfolio-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.portfolio-card:hover .portfolio-link {
+  transform: translateX(4px);
+}
+/* ================= MOBILE MENU ================= */
+
+/* MENU TOGGLE (☰) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3000;
+}
+
+.navbar.scrolled .menu-toggle {
+  color: #0f172a;
+}
+
+/* TOP CLOSE BUTTON (❌ – SAME PLACE AS ☰) */
+.top-close {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3001;
+}
+
+.navbar.scrolled .top-close {
+  color: #0f172a;
+}
+
+/* WHEN MENU IS OPEN */
+.navbar.menu-open .menu-toggle {
+  display: none;
+}
+
+.navbar.menu-open .top-close {
+  display: block;
+}
+
+/* OVERLAY (DROPDOWN CONTAINER) */
+.mobile-menu {
+  position: fixed;
+  top: 80px; /* navbar height */
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.25s ease;
+  z-index: 1500;
+}
+
+/* ACTIVE STATE */
+.mobile-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* CARD */
+.mobile-menu-card {
+  background: white;
+  width: 92%;
+  max-width: 360px;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 22px 22px 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+}
+
+/* HEADER INSIDE CARD */
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+/* LINKS */
+.mobile-menu-card a {
+  display: block;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 14px 0;
+}
+
+/* CONTACT BUTTON */
+.mobile-menu-card .btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 12px;
+  color: #ffffff !important;
+}
+
+/* ================= RESPONSIVE (PHONE ONLY) ================= */
+@media (max-width: 900px) {
+
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  /* BLURRED BACKGROUND LIKE IMAGE */
+  .mobile-menu {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    padding-top: 12px;
+  }
+
+  /* LOGO STYLE IN MENU CARD */
+  .mobile-menu-header .logo {
+    color: #1e90ff;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .mobile-menu-header .logo span {
+    color: #1e90ff;
+  }
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+<nav class="navbar transparent" id="navbar">
+  <div class="logo">web<span>dev lb</span></div>
+
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact" class="btn btn-primary">Contact Us</a>
+  </div>
+
+  <!-- HAMBURGER -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- CLOSE (SAME POSITION AS HAMBURGER) -->
+  <button class="menu-close top-close" id="menuClose" aria-label="Close menu">
+    <i class="fas fa-times"></i>
+  </button>
+</nav>
+
+<!-- MOBILE MENU DROPDOWN -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-card">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact" class="btn btn-primary">Contact Us</a>
+  </div>
+</div>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Need A <span>Website</span></h1>
+
+      <p>
+        From hosting and SEO to complete web solutions.
+        Your one-stop digital agency for all your online needs.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn btn-primary">View Our Work →</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <h2>Our Services</h2>
+      <p>Comprehensive digital solutions tailored to your business needs</p>
+    </div>
+  
+    <div class="services-grid">
+  
+      <div class="service-card">
+        <div class="icon-box">
+          <!-- Server icon -->
+          <svg width="26" height="26" fill="none" stroke="white" stroke-width="2">
+            <rect x="3" y="4" width="20" height="6" rx="2"/>
+            <rect x="3" y="14" width="20" height="6" rx="2"/>
+          </svg>
+        </div>
+        <h3>Web Hosting</h3>
+        <p>Fast, secure, and reliable hosting solutions for websites of all sizes.</p>
+      </div>
+  
+      <div class="service-card">
+        <div class="icon-box">
+          <!-- SEO icon -->
+          <svg width="26" height="26" fill="none" stroke="white" stroke-width="2">
+            <polyline points="4 16 10 10 15 14 22 6"/>
+            <polyline points="16 6 22 6 22 12"/>
+          </svg>
+        </div>
+        <h3>SEO Optimization</h3>
+        <p>Boost your search rankings and drive organic traffic to your website.</p>
+      </div>
+  
+      <div class="service-card">
+        <div class="icon-box">
+          <!-- Code icon -->
+          <svg width="26" height="26" fill="none" stroke="white" stroke-width="2">
+            <polyline points="9 18 3 12 9 6"/>
+            <polyline points="15 6 21 12 15 18"/>
+          </svg>
+        </div>
+        <h3>Web Development</h3>
+        <p>Custom websites and web applications built with modern technologies.</p>
+      </div>
+  
+      <div class="service-card">
+        <div class="icon-box">
+          <!-- Mobile icon -->
+          <svg width="26" height="26" fill="none" stroke="white" stroke-width="2">
+            <rect x="7" y="2" width="12" height="22" rx="2"/>
+            <circle cx="13" cy="19" r="1"/>
+          </svg>
+        </div>
+        <h3>Mobile Apps</h3>
+        <p>Native and cross-platform mobile applications for iOS and Android.</p>
+      </div>
+  
+      <div class="service-card">
+        <div class="icon-box">
+          <!-- Cart icon -->
+          <svg width="26" height="26" fill="none" stroke="white" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l3 13h13l3-8H6"/>
+          </svg>
+        </div>
+        <h3>E-Commerce</h3>
+        <p>Complete online store solutions with payment integration and inventory management.</p>
+      </div>
+  
+      <div class="service-card">
+        <div class="icon-box">
+          <!-- Palette icon -->
+          <svg width="26" height="26" fill="none" stroke="white" stroke-width="2">
+            <circle cx="13" cy="13" r="10"/>
+            <circle cx="9" cy="10" r="1"/>
+            <circle cx="17" cy="10" r="1"/>
+            <circle cx="13" cy="17" r="1"/>
+          </svg>
+        </div>
+        <h3>UI/UX Design</h3>
+        <p>Beautiful, intuitive designs that engage users and drive conversions.</p>
+      </div>
+  
+    </div>
+  </section>
+  <!-- OUR WORK -->
+  <section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <h2>Our Work</h2>
+    <p>Delivering exceptional results for clients across industries</p>
+  </div>
+
+  <div class="portfolio-grid">
+
+    <!-- PROJECT 1 -->
+    <a href="https://manounelb.com" target="_blank" class="portfolio-card-link">
+      <div class="portfolio-card">
+        <div class="portfolio-image">
+          <img src="manoune-logo.png" alt="Project 1">
+        </div>
+
+        <div class="portfolio-content">
+          <span class="portfolio-tag">Web Development</span>
+          <h3>E-Commerce Platform</h3>
+          <p>Full-stack e-commerce solution with payment integration</p>
+          <span class="portfolio-link">View Project ↗</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- PROJECT 2 -->
+    <a href="https://mhresults.com" target="_blank" class="portfolio-card-link">
+      <div class="portfolio-card">
+        <div class="portfolio-image">
+          <img src="mh-logo.png" alt="Project 2">
+        </div>
+
+        <div class="portfolio-content">
+          <span class="portfolio-tag">Web Development</span>
+          <h3>Business Website</h3>
+          <p>Modern responsive website built for brand growth</p>
+          <span class="portfolio-link">View Project ↗</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="contact-header">
+    <h2>Get In Touch</h2>
+    <p>Ready to start your project? Let's discuss how we can help you succeed.</p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- LEFT -->
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <strong>Email</strong>
+          <p>mazenader93@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <strong>Phone</strong>
+          <p>+961 81 493 448</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM (KEEP THIS ONE ONLY) -->
+    <form class="contact-form" id="contact-form">
+      <div class="form-row">
+        <div>
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+
+        <div>
+          <label>Email</label>
+          <input type="email" name="email" placeholder="your@email.com" required>
+        </div>
+      </div>
+
+      <label>Message</label>
+      <textarea name="message" rows="6" placeholder="Tell us about your project..." required></textarea>
+
+      <button type="submit" class="btn btn-primary">Send Message ✈️</button>
+
+      <p id="form-status"></p>
+    </form>
+
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col">
+      <h3 class="footer-logo">web<span>dev lb</span></h3>
+      <p class="footer-text">
+        Building modern digital solutions that help businesses grow.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- SOCIALS -->
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/profile.php?id=61586642582433" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/web_dev_lb" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/96181493448" target="_blank" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 YourCompany. All rights reserved.
+  </div>
+</footer>
+
+
+
+  <script>
+    const navbar = document.getElementById("navbar");
+  
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add("scrolled");
+        navbar.classList.remove("transparent");
+      } else {
+        navbar.classList.remove("scrolled");
+        navbar.classList.add("transparent");
+      }
+    });
+  </script>
+  <!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  // 1️⃣ INIT EMAILJS (REPLACE WITH YOUR REAL PUBLIC KEY)
+  emailjs.init("eePOHA7gBZ38Z-tn6");
+
+  // 2️⃣ FORM LOGIC
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_qkwotjw",      // ✅ YOUR REAL SERVICE ID
+      "template_dlo8tuk",     // ❗ PUT YOUR TEMPLATE ID HERE
+      this
+    ).then(() => {
+      status.textContent = "Message sent successfully!";
+      status.style.color = "green";
+      form.reset();
+    }, (error) => {
+      status.textContent = "Failed to send message. Try again.";
+      status.style.color = "red";
+      console.error(error);
+    });
+  });
+</script>
+<script>
+  const menuToggle = document.getElementById("menuToggle"); // ☰
+  const menuClose = document.getElementById("menuClose");   // ❌
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  // OPEN MENU
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+    menuToggle.style.display = "none";
+    menuClose.style.display = "block";
+  });
+
+  // CLOSE MENU (X)
+  menuClose.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+    menuClose.style.display = "none";
+    menuToggle.style.display = "block";
+  });
+
+  // CLOSE WHEN CLICKING A LINK
+  mobileMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      menuClose.style.display = "none";
+      menuToggle.style.display = "block";
+    });
+  });
+</script>
+
+
+
+</body>
+</html>
